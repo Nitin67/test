@@ -37,11 +37,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 import com.google.inject.Inject;
-
-import akka.event.slf4j.Logger;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;
+import play.Logger;
 import scala.concurrent.ExecutionContextExecutor;
 
 @Singleton
@@ -69,6 +68,7 @@ public class PharmController extends Controller {
 
 	public CompletionStage<Result> createPatient() {
 		JsonNode node = request().body().asJson();
+		Logger.info("Creating Patient Entity for json: "+ node.toString());
 		PatientEntity patient = null;
 		try {
 			patient = mapper.treeToValue(node, PatientEntity.class);
@@ -76,12 +76,12 @@ public class PharmController extends Controller {
 			return errorInterface.getError("BadRequest", e.getMessage()).thenApplyAsync(Results::badRequest, exec);
 		}
 		CompletionStage<String> res = patientAccess.createPatient(patient);
-		
 		return res.thenApplyAsync(resource -> created(Json.toJson("Test" + resource)), exec);
 	}
 
 	public CompletionStage<Result> createDoctor() {
 		JsonNode node = request().body().asJson();
+		Logger.info("Creating Doc Entity for json: "+ node.toString());
 		DoctorEntity doctor = null;
 		try {
 			doctor = mapper.treeToValue(node, DoctorEntity.class);
@@ -94,11 +94,12 @@ public class PharmController extends Controller {
 
 	public CompletionStage<Result> createPharmcist() {
 		JsonNode node = request().body().asJson();
-
+		Logger.info("Creating Pharmcist Entity for json: "+ node.toString());
 		PharmacistEntity pharmcist = null;
 		try {
 			pharmcist = mapper.treeToValue(node, PharmacistEntity.class);
 		} catch (JsonProcessingException e) {
+			Logger.error("JsonProcessingException for request: " + node.toString()+ " with error mssg: " + e.getMessage());
 			return errorInterface.getError("BadRequest", e.getMessage()).thenApplyAsync(Results::badRequest, exec);
 		}
 		CompletionStage<String> res = pharmcistAccess.createPharmcist(pharmcist);
@@ -106,6 +107,7 @@ public class PharmController extends Controller {
 	}
 
 	public CompletionStage<Result> findDoc(String id) {
+		Logger.info("Getting Doc Entity for id: "+ id);
 		CompletionStage<Optional<DoctorEntity>> res = doctorAccess.getDoc(id);
 		return res.thenApplyAsync(optionalResource -> {
 			return optionalResource.map(resource -> ok(Json.toJson(resource))).orElseGet(() -> notFound());
@@ -113,6 +115,7 @@ public class PharmController extends Controller {
 	}
 
 	public CompletionStage<Result> findPatient(String id) {
+		Logger.info("Getting patient Entity for id: "+ id);
 		CompletionStage<Optional<PatientEntity>> res = patientAccess.getPatient(id);
 		return res.thenApplyAsync(optionalResource -> {
 			return optionalResource.map(resource -> ok(Json.toJson(resource))).orElseGet(() -> notFound());
@@ -120,6 +123,7 @@ public class PharmController extends Controller {
 	}
 
 	public CompletionStage<Result> findPharmcist(String id) {
+		Logger.info("Getting Pharmacist Entity for id: "+ id);
 		CompletionStage<Optional<PharmacistEntity>> res = pharmcistAccess.getPharmcist(id);
 		return res.thenApplyAsync(optionalResource -> {
 			return optionalResource.map(resource -> ok(Json.toJson(resource))).orElseGet(() -> notFound());
@@ -128,6 +132,7 @@ public class PharmController extends Controller {
 
 	public CompletionStage<Result> requestPatientPrescriptionAccess(String id) {
 		JsonNode node = request().body().asJson();
+		Logger.info("Requesting User Entity for id: "+ id + "for patient access" + node.toString());
 		AccessPermissionRequest perRequest = null;
 		try {
 			perRequest = mapper.treeToValue(node, AccessPermissionRequest.class);
@@ -137,11 +142,14 @@ public class PharmController extends Controller {
 				return optionalResource.map(resource -> created(Json.toJson(resource))).orElseGet(() -> notFound());
 			}, exec);
 		} catch (JsonProcessingException e) {
+			Logger.error("JsonProcessingException for request: " + node.toString() + " with error mssg: " + e.getMessage());
 			return errorInterface.getError("BadRequest", e.getMessage()).thenApplyAsync(Results::badRequest, exec);
 		} catch (IOException e) {
+			Logger.error("IOException for request: " + node.toString() + " with error mssg: " + e.getMessage());
 			return errorInterface.getError("Internal ServerError", e.getMessage()).thenApplyAsync(Results::internalServerError,
 					exec);
 		}catch (NoSuchElementException e) {
+			Logger.error("NoSuchElementException for request: " + node.toString() + " with error mssg: " + e.getMessage());
 			return errorInterface.getError("BadRequest", e.getMessage()).thenApplyAsync(Results::notFound,
 					exec);
 		}
@@ -149,6 +157,7 @@ public class PharmController extends Controller {
 
 	public CompletionStage<Result> updatePrescriptionStatus(String id) {
 		JsonNode node = request().body().asJson();
+		Logger.info("Updatind User Entity for id: "+ id + " for data: " + node.toString());
 		RequestList list = null;
 
 		try {
@@ -159,8 +168,10 @@ public class PharmController extends Controller {
 				return optionalResource.map(resource -> ok(Json.toJson(resource))).orElseGet(() -> notFound());
 			}, exec);
 		} catch (JsonProcessingException e) {
+			Logger.error("JsonProcessingException for request: " + node.toString() + " with error mssg: " + e.getMessage());
 			return errorInterface.getError("BadRequest", e.getMessage()).thenApplyAsync(Results::badRequest, exec);
 		} catch (IOException e) {
+			Logger.error("IOException for request: " + node.toString() + " with error mssg: " + e.getMessage());
 			return errorInterface.getError("BadRequest", e.getMessage()).thenApplyAsync(Results::internalServerError,
 					exec);
 		}
