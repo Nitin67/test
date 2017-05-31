@@ -22,6 +22,14 @@ public class DoctorEntity {
 	private List<Patient> declinedPrescriptionPatients;
 	private List<Patient> pendingPatients;
 	private Date updated;
+	private Date created;
+	public DoctorEntity() {
+		created = new Date();
+	}
+	public Date getCreated() {
+		return created;
+	}
+
 
 	public Date getUpdated() {
 		return updated;

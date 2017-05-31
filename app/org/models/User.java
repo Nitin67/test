@@ -8,14 +8,7 @@ public class User {
 	private String address;
 	private String name;
 	private Integer age;
-	private Date created;
-	public User() {
-		created = new Date();
-	}
-	public Date getCreated() {
-		return created;
-	}
-
+	
 	public String getName() {
 		return name;
 	}

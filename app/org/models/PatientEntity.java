@@ -23,6 +23,13 @@ public class PatientEntity {
 	private List<Doctor> requestPendingDoctors;
 	private List<Pharmcist> requestPendingPharmcists;
 	private Date updated;
+	private Date created;
+	public PatientEntity() {
+		created = new Date();
+	}
+	public Date getCreated() {
+		return created;
+	}
 
 	public Date getUpdated() {
 		return updated;
