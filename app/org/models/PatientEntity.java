@@ -1,6 +1,7 @@
 package org.models;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -8,6 +9,7 @@ import org.bson.types.ObjectId;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 import com.google.code.morphia.annotations.Indexed;
+import com.google.code.morphia.annotations.PrePersist;
 
 @Entity("patient")
 public class PatientEntity {
@@ -20,6 +22,15 @@ public class PatientEntity {
 	private List<Pharmcist> authorisedPharmcists;
 	private List<Doctor> requestPendingDoctors;
 	private List<Pharmcist> requestPendingPharmcists;
+	private Date updated;
+
+	public Date getUpdated() {
+		return updated;
+	}
+	@PrePersist
+	public void setUpdated() {
+		this.updated = new Date();
+	}
 
 	public ObjectId getId() {
 		return id;

@@ -76,7 +76,7 @@ public class PharmController extends Controller {
 			return errorInterface.getError("BadRequest", e.getMessage()).thenApplyAsync(Results::badRequest, exec);
 		}
 		CompletionStage<String> res = patientAccess.createPatient(patient);
-		return res.thenApplyAsync(resource -> created(Json.toJson("Test" + resource)), exec);
+		return res.thenApplyAsync(resource -> created(Json.toJson(resource)), exec);
 	}
 
 	public CompletionStage<Result> createDoctor() {
