@@ -1,0 +1,49 @@
+<!--Author: Sari Haj Hussein-->
+<div class="col-md-4">
+<form name="detailForm" role="form" class="form-horizontal">
+<fieldset>
+
+	<div class="control-group">
+		<label class="control-label" for="name">Name</label>
+		<input type="text" class="form-control" id="name" name="name" data-ng-model="doctor.name" placeholder="Enter name" required>
+		<span data-ng-show="detailForm.name.$error.required" class="help-inline">Required</span>
+	</div>
+ 
+	<div class="control-group">
+		<label class="control-label" for="age">Age</label>
+		<input type="url" class="form-control" id="age" name="age" data-ng-model="doctor.age" placeholder="Enter age" required>
+		<span data-ng-show="detailForm.age.$error.required" class="help-inline">Required</span>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="degree">Degree</label>
+		<textarea type="text" class="form-control" id="degree" name="degree" data-ng-model="doctor.degree" placeholder="Enter degree"></textarea>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="registrationId">Registration Id</label>
+		<textarea type="text" class="form-control" id="registrationId" name="registrationId" data-ng-model="doctor.registrationId" placeholder="Enter registration id"></textarea>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="consultantFee">Consultant Fee</label>
+		<textarea type="text" class="form-control" id="consultantFee" name="consultantFee" data-ng-model="doctor.consultantFee" placeholder="Enter consultantFee"></textarea>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="speciality">Speciality</label>
+		<textarea type="text" class="form-control" id="speciality" name="speciality" data-ng-model="doctor.speciality" placeholder="Enter speciality"></textarea>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="address">Address</label>
+		<textarea type="text" class="form-control" id="address" name="address" data-ng-model="doctor.address" placeholder="Enter address"></textarea>
+	</div>
+
+	<br />
+
+	<button data-ng-click="go('/')" class="btn btn-default">Cancel</button>
+	<button data-ng-click="save()"  class="btn btn-primary">Save</button>
+</fieldset>
+</form>
+</div>

@@ -15,5 +15,6 @@ libraryDependencies ++= Seq(
   "com.google.code.morphia" % "morphia" % "0.102",
   "junit" % "junit" % "4.12",
   "redis.clients" % "jedis" % "2.9.0",
-  "org.mockito" % "mockito-all" % "1.10.19"
+  "org.mockito" % "mockito-all" % "1.10.19",
+  "com.github.scala-incubator.io" % "scala-io-file_2.10" % "0.4.1"
 )

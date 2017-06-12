@@ -1,10 +1,7 @@
 package org.models;
 
-import java.util.Date;
-
 public class User {
 
-	
 	private String address;
 	private String name;
 	private Integer age;

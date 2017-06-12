@@ -1,0 +1,44 @@
+<!--Author: Sari Haj Hussein-->
+<div class="col-md-4">
+<form name="detailForm" role="form" class="form-horizontal">
+<fieldset>
+
+	<div class="control-group">
+		<label class="control-label" for="name">Name</label>
+		<input type="text" class="form-control" id="name" name="name" data-ng-model="pharmacist.name" placeholder="Enter name" required>
+		<span data-ng-show="detailForm.name.$error.required" class="help-inline">Required</span>
+	</div>
+ 
+	<div class="control-group">
+		<label class="control-label" for="age">Age</label>
+		<input type="url" class="form-control" id="age" name="age" data-ng-model="pharmacist.age" placeholder="Enter age" required>
+		<span data-ng-show="detailForm.age.$error.required" class="help-inline">Required</span>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="degree">Degree</label>
+		<textarea type="text" class="form-control" id="degree" name="degree" data-ng-model="pharmacist.degree" placeholder="Enter degree"></textarea>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="licenceNumber">Licence Number</label>
+		<textarea type="text" class="form-control" id="licenceNumber" name="licenceNumber" data-ng-model="pharmacist.licenceNumber" placeholder="Enter licence number"></textarea>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="drugKnowledgePercentile">Drug Knowledge Percentile</label>
+		<textarea type="text" class="form-control" id="drugKnowledgePercentile" name="drugKnowledgePercentile" data-ng-model="pharmacist.drugKnowledgePercentile" placeholder="Enter drugKnowledgePercentile"></textarea>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label" for="address">Address</label>
+		<textarea type="text" class="form-control" id="address" name="address" data-ng-model="pharmacist.address" placeholder="Enter address"></textarea>
+	</div>
+
+	<br />
+
+	<button data-ng-click="go('/')" class="btn btn-default">Cancel</button>
+	<button data-ng-click="save()" data-ng-disabled="noChange() || detailForm.$invalid" class="btn btn-primary">Save</button>
+</fieldset>
+</form>
+</div>

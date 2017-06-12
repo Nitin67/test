@@ -1,0 +1,88 @@
+<div>
+	<table>
+		<thead>
+			<br>Doctor detail</br>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Speciality</th>
+				<th>Degree</th>
+				<th>Consultant Fee</th>
+				<th>Registration Id</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="pad">{{doc.name}}</td>
+				<td class="pad">{{doc.age}}</td>
+				<td class="pad">{{doc.address}}</td>
+				<td class="pad">{{doc.speciality}}</td>
+				<td class="pad">{{doc.degree}}</td>
+				<td class="pad">{{doc.consultantFee}}</td>
+				<td class="pad">{{doc.registrationId}}</td>
+			</tr>
+		</tbody>
+		<thead>
+			<br>Patient detail</br>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Prescription</th>
+				<th>Medical Record</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="patient in accessiblePatients | orderBy:['name']">
+				<td class="pad">{{patient.name}}</td>
+				<td class="pad">{{patient.age}}</td>
+				<td class="pad">{{patient.address}}</td>
+				<td class="pad">{{patient.prescription}}</td>
+				<td class="pad">{{patient.medicalRecord}}</td>
+			</tr>
+		</tbody>
+			<thead>
+			<br>Patient detail</br>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Prescription</th>
+				<th>Medical Record</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="patient in declinedPrescriptionPatients | orderBy:['name']">
+				<td class="pad">{{patient.name}}</td>
+				<td class="pad">{{patient.age}}</td>
+				<td class="pad">{{patient.address}}</td>
+				<td class="pad">{{patient.prescription}}</td>
+				<td class="pad">{{patient.medicalRecord}}</td>
+			</tr>
+		</tbody>
+			<thead>
+			<br>Patient detail</br>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Prescription</th>
+				<th>Medical Record</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="patient in pendingPatients | orderBy:['name']">
+				<td class="pad">{{patient.name}}</td>
+				<td class="pad">{{patient.age}}</td>
+				<td class="pad">{{patient.address}}</td>
+				<td class="pad">{{patient.prescription}}</td>
+				<td class="pad">{{patient.medicalRecord}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

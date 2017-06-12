@@ -1,0 +1,15 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+
+@(message: org.models.Doctor)
+
+<html lang="en">
+    <body>
+        @* And here's where we render the `Html` object containing
+         * the page content. *@
+        @message.getName()
+        
+    </body>
+</html>

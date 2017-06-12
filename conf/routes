@@ -2,8 +2,16 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+
+GET     /test                           controllers.HomeController.test
+
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /:id               controllers.HomeController.index(id)
+GET     /                  controllers.HomeController.index(id=null)
+GET     /patient/:id       controllers.HomeController.index(id)
+GET     /doctor/:id       controllers.HomeController.index(id)
+GET     /pharmacist/:id       controllers.HomeController.index(id)
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code
@@ -12,18 +20,21 @@ GET     /message                    controllers.AsyncController.message
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
-PUT     /patient                    controllers.PharmController.createPatient
+PUT     /api/patient                    controllers.PharmController.createPatient
 
-PUT 	/doctor						controllers.PharmController.createDoctor
+PUT 	/api/doctor						controllers.PharmController.createDoctor
 
-PUT 	/pharmcist					controllers.PharmController.createPharmcist
+PUT 	/api/pharmcist					controllers.PharmController.createPharmcist
 
-GET 	/doctor/:id				controllers.PharmController.findDoc(id)
+GET 	/api/doctor/:id				controllers.PharmController.findDoc(id)
 
-GET 	/patient/:id				controllers.PharmController.findPatient(id)
+GET 	/api/patient/:id				controllers.PharmController.findPatient(id)
 
-GET 	/pharmcist/:id				controllers.PharmController.findPharmcist(id)
+GET 	/api/pharmcist/:id				controllers.PharmController.findPharmcist(id)
 
 PUT 	/patient/:id/prescription		controllers.PharmController.requestPatientPrescriptionAccess(id)
 
 POST 	/patient/:id/prescription				controllers.PharmController.updatePrescriptionStatus(id)
+
+GET      /views/:any            controllers.HomeController.loadPublicHTML(any)
+

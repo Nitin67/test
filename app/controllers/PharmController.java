@@ -9,7 +9,6 @@ import java.util.concurrent.CompletionStage;
 import play.api.Play;
 import play.api.http.HttpErrorHandlerExceptions;
 import play.libs.Json;
-import javax.inject.Singleton;
 import javax.ws.rs.core.UriInfo;
 
 import org.apache.http.RequestLine;
@@ -37,6 +36,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.query.Query;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.Results;

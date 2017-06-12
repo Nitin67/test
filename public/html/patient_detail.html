@@ -1,0 +1,116 @@
+<div>
+	<table>
+		<thead>
+			<br>Patient detail</br>	
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Prescription</th>
+				<th>Medical Record</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="pad">{{patient.name}}</td>
+				<td class="pad">{{patient.age}}</td>
+				<td class="pad">{{patient.address}}</td>
+				<td class="pad">{{patient.prescription}}</td>
+				<td class="pad">{{patient.medicalRecord}}</td>
+			</tr>
+		</tbody>
+		<thead>
+			<br>Authorised Doc detail</br>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Speciality</th>
+				<th>Degree</th>
+				<th>Consultant Fee</th>
+				<th>Registration Id</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="doc in authorisedDoctors | orderBy:['name']">
+				<td class="pad">{{doc.name}}</td>
+				<td class="pad">{{doc.age}}</td>
+				<td class="pad">{{doc.address}}</td>
+				<td class="pad">{{doc.speciality}}</td>
+				<td class="pad">{{doc.degree}}</td>
+				<td class="pad">{{doc.consultantFee}}</td>
+				<td class="pad">{{doc.registrationId}}</td>
+			</tr>
+		</tbody>
+		<thead>
+			<br>Pending Doc detail</br>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Speciality</th>
+				<th>Degree</th>
+				<th>Consultant Fee</th>
+				<th>Registration Id</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="doc in requestPendingDoctors | orderBy:['name']">
+				<td class="pad">{{doc.name}}</td>
+				<td class="pad">{{doc.age}}</td>
+				<td class="pad">{{doc.address}}</td>
+				<td class="pad">{{doc.speciality}}</td>
+				<td class="pad">{{doc.degree}}</td>
+				<td class="pad">{{doc.consultantFee}}</td>
+				<td class="pad">{{doc.registrationId}}</td>
+			</tr>
+		</tbody>
+		<thead>
+			<br>Authorised Pharmacist detail</br>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Drug Knowledge Percentile</th>
+				<th>Degree</th>
+				<th>Licence Number</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="pharmacist in authorisedPharmcists | orderBy:['name']">
+				<td class="pad">{{pharmacist.name}}</td>
+				<td class="pad">{{pharmacist.age}}</td>
+				<td class="pad">{{pharmacist.address}}</td>
+				<td class="pad">{{pharmacist.drugKnowledgePercentile}}</td>
+				<td class="pad">{{pharmacist.degree}}</td>
+				<td class="pad">{{pharmacist.licenceNumber}}</td>
+			</tr>
+		</tbody>
+				<thead>
+			<br>Pending Pharmacist detail</br>
+			<tr>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Drug Knowledge Percentile</th>
+				<th>Degree</th>
+				<th>Licence Number</th>
+				<th><a href="/create"><i class="glyphicon glyphicon-plus-sign"></i></a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="pharmacist in requestPendingPharmcists | orderBy:['name']">
+				<td class="pad">{{pharmacist.name}}</td>
+				<td class="pad">{{pharmacist.age}}</td>
+				<td class="pad">{{pharmacist.address}}</td>
+				<td class="pad">{{pharmacist.drugKnowledgePercentile}}</td>
+				<td class="pad">{{pharmacist.degree}}</td>
+				<td class="pad">{{pharmacist.licenceNumber}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
